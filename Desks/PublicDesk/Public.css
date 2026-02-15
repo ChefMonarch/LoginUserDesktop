@@ -1,4 +1,8 @@
 /* Background */
 body {
-    background-image: url("BG_IMG/PublicBG.jpg");
+    background-image: url("Img/PublicBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
