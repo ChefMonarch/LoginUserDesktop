@@ -46,6 +46,86 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-//
+///
 // Login System
 //
+
+// Save new account locally
+function SignUp(){
+
+    // Get input values
+    const username = document.getElementById("UN");
+    const password = document.getElementById("PW");
+    const msg = document.getElementById("LoginMsg");
+
+    // Reset message
+    if(username.value === "" || password.value === ""){
+        msg.textContent = "Enter username & password to sign up";
+        return;
+    }
+
+    // Store credentials
+    localStorage.setItem("savedUser", username.value);
+    localStorage.setItem("savedPass", password.value);
+
+    // Success message
+    msg.style.color = "lightgreen";
+    msg.textContent = "Account saved locally! You can login now.";
+
+    username.value = "";
+    password.value = "";
+}
+
+
+// Login check
+function NextPage(){
+
+    // Get input values
+    const username = document.getElementById("UN");
+    const password = document.getElementById("PW");
+    const msg = document.getElementById("LoginMsg");
+
+    // Reset message
+    msg.style.color = "red";
+    msg.textContent = "";
+
+    // Retrieve stored account
+    const savedUser = localStorage.getItem("savedUser");
+    const savedPass = localStorage.getItem("savedPass");
+
+    // Fixed Accounts
+    //Public
+    if(username.value === "Mr_Admin" && password.value === "GodPlayer123"){
+        window.location.href = "Desks/PublicDesk/Public.html";
+    } 
+    // KRV
+    else if(username.value === "TarnishedMonarch" && password.value === "7EldenRing$"){
+        window.location.href = "Desks/Exclusive/KRVDesk/KRV.html";
+    }
+    // YS
+    else if(username.value === "HDSV" && password.value === "Gu"){
+        window.location.href = "Desks/Exclusive/YSDesk/YS.html";
+    }
+    // JG
+    else if(username.value === "TheBunFactory" && password.value === "Recoil"){
+        window.location.href = "Desks/Exclusive/JGDesk/JG.html";
+    }
+
+    // Locally Signed-Up Account
+    else if(username.value === savedUser && password.value === savedPass){
+        window.location.href = "Desks/PublicDesk/Public.html";
+    }
+
+    // Invalid Login
+    else {
+       window.location.href = "index.html";
+    }
+}
+
+
+// Enter key login
+document.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+        NextPage();
+    }
+});

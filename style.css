@@ -56,3 +56,11 @@ button:hover {
 button:active {
     background-color: #a3eda5;
 }
+
+/* Error */
+#LoginMsg {
+    color: red;
+    margin-top: 10px;
+    min-height: 20px;
+    font-size: 14px;
+}
