@@ -3,7 +3,5 @@ This website I created is a login system that allows you to login and spend some
 
 # Public Login (Not available at this time)
 You will input this username and password to the website:<br>
-Username:
+Username:<br>
 Password:
-
-
