@@ -7,7 +7,7 @@ body {
     background-size: cover;
 }
 
-/* Apps */
+/* Apps Layout/Design */
 #Apps {
     display: flex;
     flex-wrap: wrap;
@@ -24,6 +24,7 @@ body {
     cursor: pointer;
 }
 
+/* App Icons */
 #Google {
     background-image: url("AppIconesImg/GoogleApp.png");
 }
@@ -35,6 +36,9 @@ body {
 }
 #Notes {
     background-image: url("AppIconesImg/NotesApp.png");
+}
+#FileVault {
+    background-image: url("AppIconesImg/FileVaultIcon.jpg");
 }
 
 /* Push apps down so they don't hide under bar */
