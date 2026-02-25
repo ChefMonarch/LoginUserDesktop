@@ -89,3 +89,84 @@ body {
 #Logout:hover {
     background-color: rgba(160, 0, 0, 0.8);
 }
+
+
+
+
+
+
+
+/* ===== Taskbar Center Code ===== */
+#TaskbarCenter {
+    color: white;
+    font-family: monospace;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+/* ===== FileVault Modal ===== */
+#VaultModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+}
+
+#VaultWindow {
+    position: absolute;
+    background: rgba(20, 20, 20, 0.95);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    cursor: grab;
+}
+
+#VaultInput {
+    width: 120px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+#VaultMessage {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff4d4d;
+    min-height: 1em;
+}
+
+#VaultSubmit {
+    margin-top: 15px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#VaultClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #aa3333;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+}
