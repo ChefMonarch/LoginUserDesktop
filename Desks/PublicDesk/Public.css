@@ -36,3 +36,52 @@ body {
 #Notes {
     background-image: url("AppIconesImg/NotesApp.png");
 }
+
+/* Push apps down so they don't hide under bar */
+#Apps {
+    margin-top: 80px;
+}
+
+/* System Icon */
+#SystemIcon {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-image: url("Img/KRVLogo.jpg"); /* Change later */
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* ===== Taskbar (Updated Layout) ===== */
+#Taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Left + Right sides */
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Logout Button */
+#Logout {
+    background-color: rgba(120, 0, 0, 0.6); /* Dim red */
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s ease;
+}
+
+#Logout:hover {
+    background-color: rgba(160, 0, 0, 0.8);
+}
