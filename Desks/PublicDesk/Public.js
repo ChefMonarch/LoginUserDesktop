@@ -69,7 +69,7 @@ if (vaultSubmit) {
         const requiredCode = currentCode.substring(0, 6);
 
         if (entered === requiredCode) {
-            window.open("Apps/FileApp/LockedFile/index.html", "_blank");
+            window.open("Apps/FileApp/LockedFile/LockedIndex.html", "_blank");
             vaultModal.style.display = "none";
         } else {
             vaultMessage.textContent = "Incorrect";
@@ -85,7 +85,7 @@ if (vaultInput) {
 
 //  Auto-generate Code 
 generateCode();
-setInterval(generateCode, 5000);
+setInterval(generateCode, 10000);
 
 //  Drag Functionality 
 let isDragging = false;
