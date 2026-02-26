@@ -93,20 +93,24 @@ function NextPage(){
     const savedUser = localStorage.getItem("savedUser");
     const savedPass = localStorage.getItem("savedPass");
 
+    // 🔹 SAVE ORIGIN PAGE (VERY IMPORTANT)
+    // This remembers that login page is the origin
+    sessionStorage.setItem("originPage", window.location.href);
+
     // Fixed Accounts
-    //Public
+    // Public Desk
     if(username.value === "Mr_Admin" && password.value === "GodPlayer123"){
         window.location.href = "Desks/PublicDesk/Public.html";
     } 
-    // KRV
+    // KRV Desk
     else if(username.value === "TarnishedMonarch" && password.value === "7EldenRing$"){
         window.location.href = "Desks/Exclusive/KRVDesk/KRV.html";
     }
-    // YS
+    // YS Desk
     else if(username.value === "HDSV" && password.value === "Gu"){
         window.location.href = "Desks/Exclusive/YSDesk/YS.html";
     }
-    // JG
+    // JG Desk
     else if(username.value === "TheBunFactory" && password.value === "Recoil"){
         window.location.href = "Desks/Exclusive/JGDesk/JG.html";
     }
@@ -118,14 +122,6 @@ function NextPage(){
 
     // Invalid Login
     else {
-       window.location.href = "index.html";
+        msg.textContent = "Invalid Username or Password";
     }
 }
-
-
-// Enter key login
-document.addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-        NextPage();
-    }
-});

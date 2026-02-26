@@ -12,7 +12,7 @@
 <div id="Apps">
     <button id="Google" onclick="window.location.href='https://www.google.com'"></button>
     <button id="Youtube" onclick="window.location.href='https://www.youtube.com'"></button>
-    <button id="Calculator" onclick="window.location.href='Apps/CalculatorApp/index.html'"></button>
+    <button id="Calculator"></button>
     <button id="ToDo" onclick="window.location.href='Apps/ToDoApp/index.html'"></button>
     <button id="NotesVault"></button>
     <button id="OpenNotes" onclick="window.location.href='Apps/FileApp/OpenFile/OpenIndex.html'"></button>
@@ -27,6 +27,37 @@
         <input type="text" id="VaultInput" maxlength="6" placeholder="passcode">
         <div id="VaultMessage"></div>
         <button id="VaultSubmit">Unlock</button>
+    </div>
+</div>
+
+<!-- Calculator Mini Window -->
+<div id="CalcModal">
+    <div id="CalcWindow">
+        <button id="CalcClose">X</button>
+        <input id="calcDisplay" readonly>
+
+        <div id="calcKeys">
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+        </div>
     </div>
 </div>
 
@@ -45,7 +76,7 @@
 
     <!-- Right Side (Logout) -->
     <div id="TaskbarRight">
-        <button id="Logout" onclick="window.location.href='PublicDesk/Desks/indexml'">Logout</button>
+        <button id="Logout" onclick="returnToOrigin()">Logout</button>
     </div>
 
 </div>

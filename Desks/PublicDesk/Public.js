@@ -115,3 +115,87 @@ document.addEventListener("mouseup", () => {
 });
 
 });
+
+
+
+
+// 
+// CALCULATOR MINI WINDOW
+// 
+
+const calcBtn = document.getElementById("Calculator");
+const calcModal = document.getElementById("CalcModal");
+const calcWindow = document.getElementById("CalcWindow");
+const calcClose = document.getElementById("CalcClose");
+const calcDisplay = document.getElementById("calcDisplay");
+
+// Open calculator
+if (calcBtn) {
+    calcBtn.addEventListener("click", () => {
+        calcModal.style.display = "block";
+    });
+}
+
+// Close calculator
+if (calcClose) {
+    calcClose.addEventListener("click", () => {
+        calcModal.style.display = "none";
+    });
+}
+
+// Calculator functions
+window.appendToDisplay = function(input) {
+    calcDisplay.value += input;
+};
+
+window.clearDisplay = function() {
+    calcDisplay.value = "";
+};
+
+window.calculate = function() {
+    try {
+        calcDisplay.value = eval(calcDisplay.value);
+    } catch {
+        calcDisplay.value = "Error";
+    }
+};
+
+// Dragging
+let calcDragging = false;
+let calcOffsetX = 0;
+let calcOffsetY = 0;
+
+if (calcWindow) {
+    calcWindow.addEventListener("mousedown", (e) => {
+        if (e.target === calcClose) return;
+        calcDragging = true;
+        calcOffsetX = e.clientX - calcWindow.offsetLeft;
+        calcOffsetY = e.clientY - calcWindow.offsetTop;
+        calcWindow.style.cursor = "grabbing";
+    });
+}
+
+document.addEventListener("mousemove", (e) => {
+    if (calcDragging) {
+        calcWindow.style.left = (e.clientX - calcOffsetX) + "px";
+        calcWindow.style.top = (e.clientY - calcOffsetY) + "px";
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    calcDragging = false;
+    if (calcWindow) calcWindow.style.cursor = "grab";
+});
+
+
+// Logout Button (redirects to main index page)
+function returnToOrigin() {
+    const origin = sessionStorage.getItem("originPage");
+
+    if (origin) {
+        window.location.href = origin;
+    } else {
+        // Fallback if session lost (refresh/direct access)
+        window.location.href = "../../index.html";
+    }
+}
