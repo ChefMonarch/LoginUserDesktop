@@ -34,11 +34,14 @@ body {
 #Calculator {
     background-image: url("AppIconesImg/CalculatorApp.jpg");
 }
-#Notes {
-    background-image: url("AppIconesImg/NotesApp.png");
+#ToDo {
+    background-image: url("AppIconesImg/ToDoIcon.jpg");
 }
-#FileVault {
+#NotesVault {
     background-image: url("AppIconesImg/FileVaultIcon.jpg");
+}
+#OpenNotes {
+    background-image: url("AppIconesImg/NotesApp.png");
 }
 
 /* Push apps down so they don't hide under bar */
@@ -89,12 +92,6 @@ body {
 #Logout:hover {
     background-color: rgba(160, 0, 0, 0.8);
 }
-
-
-
-
-
-
 
 /* ===== Taskbar Center Code ===== */
 #TaskbarCenter {
