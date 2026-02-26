@@ -18,17 +18,21 @@
     <button id="OpenNotes" onclick="window.location.href='Apps/FileApp/OpenFile/OpenIndex.html'"></button>
 </div>
 
+
+
 <!-- FileVault Mini Window -->
 <div id="VaultModal">
     <div id="VaultWindow">
         <button id="VaultClose">X</button>
         <h3>FileVault Access</h3>
-        <p>Enter an 6 character passcode</p>
+        <p>Enter a 6 character passcode</p>
         <input type="text" id="VaultInput" maxlength="6" placeholder="passcode">
         <div id="VaultMessage"></div>
         <button id="VaultSubmit">Unlock</button>
     </div>
 </div>
+
+
 
 <!-- Calculator Mini Window -->
 <div id="CalcModal">
@@ -61,13 +65,16 @@
     </div>
 </div>
 
+
+
 <!-- Taskbar / Utility Bar -->
 <div id="Taskbar">
 
     <!-- Left Side (System Icon) -->
     <div id="TaskbarLeft">
-        <button id="SystemIcon" onclick="window.location.href='System/System.html'"></button>
-    </div>
+    <button id="SystemIcon" onclick="window.location.href='System/System.html'"></button>
+    <button id="MuteBtn" title="Mute / Unmute">🔊</button>
+</div>
 
     <!-- Center (Live Random Code) -->
     <div id="TaskbarCenter">
@@ -80,6 +87,12 @@
     </div>
 
 </div>
+
+
+<!-- BACKGROUND MUSIC PLAYER (Playlist) -->
+<audio id="bgMusic" autoplay loop>
+    Your browser does not support the audio element.
+</audio>
 
 <script src="Public.js"></script>
 </body>

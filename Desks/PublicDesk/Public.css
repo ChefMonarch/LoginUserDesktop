@@ -244,3 +244,50 @@ body {
 #calcKeys .operator-btn {
     background-color: hsl(35, 100%, 50%);
 }
+
+
+
+/* ===== Background Music Controls (Bottom Fixed Bar) ===== */
+#bgMusic {
+    position: fixed;
+    bottom: 10px;          /* Distance from bottom */
+    left: 50%;             /* Center horizontally */
+    transform: translateX(-50%);
+    
+    width: 400px;          /* Control bar width */
+    max-width: 90%;        /* Responsive on smaller screens */
+    
+    z-index: 3000;         /* Above taskbar/modals */
+    
+    border-radius: 12px;
+    opacity: 0.9;
+}
+
+/* Optional: subtle desktop aesthetic */
+#bgMusic:hover {
+    opacity: 1;
+}
+
+/* Taskbar Left Layout */
+#TaskbarLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Mute Button */
+#MuteBtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#MuteBtn:hover {
+    background: rgba(255,255,255,0.25);
+}

@@ -13,7 +13,7 @@ function generateCode() {
     let coloredHTML = "";
 
     // Keeping visual style (long animated string)
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 80; i++) {
         const char = characters[Math.floor(Math.random() * characters.length)];
         result += char;
 
@@ -199,3 +199,73 @@ function returnToOrigin() {
         window.location.href = "../../index.html";
     }
 }
+
+
+
+
+// 
+// SIMPLE PLAYLIST ROTATOR (5+ TRACKS)
+// 
+
+// Wait until the page fully loads
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Grab the audio element
+    const audio = document.getElementById("bgMusic");
+    const muteBtn = document.getElementById("MuteBtn");
+
+    // Mute toggle
+    muteBtn.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+
+        if (audio.muted) {
+            muteBtn.textContent = "🔇";
+        } else {
+            muteBtn.textContent = "🔊";
+        }
+    });
+
+    // Playlist (your exact files)
+    const playlist = [
+        "Music/LaFaena-CarDrive.mp3",
+        "Music/MaestroOne-AllSaidAndDone.mp3",
+        "Music/MaestroOne-LetItGo.mp3",
+        "Music/SandroMarinoni-EndUp.mp3",
+        "Music/TillParadiso-NewIdeas.mp3"
+    ];
+
+    // Track index tracker
+    let currentTrack = 0;
+
+    // Function to load and play a track
+    function loadTrack(index) {
+        // Safety check
+        if (index < 0 || index >= playlist.length) return;
+
+        // Change the audio source
+        audio.src = playlist[index];
+
+        // Load the new track
+        audio.load();
+
+        // Attempt to play (user can also press play manually)
+        audio.play().catch(() => {
+            console.log("Autoplay prevented until user interaction.");
+        });
+    }
+
+    // When a song finishes → go to next song
+    audio.addEventListener("ended", () => {
+        currentTrack++;
+
+        // Loop back to first track after last
+        if (currentTrack >= playlist.length) {
+            currentTrack = 0;
+        }
+
+        loadTrack(currentTrack);
+    });
+
+    // Optional: start with first track loaded (but not forced autoplay)
+    loadTrack(currentTrack);
+});
