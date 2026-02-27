@@ -1,4 +1,4 @@
-/* ====================== GET DOM ELEMENTS ====================== */
+/*  GET DOM ELEMENTS  */
 const addFileBtn = document.getElementById("addFileBtn"); // "+" add button
 const fileList = document.getElementById("fileList"); // UL container for files
 const txtFile = document.getElementById("TxtFile"); // Text editor
@@ -10,12 +10,16 @@ const modalOk = document.getElementById("modalOk"); // Modal OK button
 const modalCancel = document.getElementById("modalCancel"); // Modal Cancel button
 const modeToggle = document.getElementById("modeToggle"); // Dark/Light toggle
 
-/* ====================== STORAGE & DATA ====================== */
-const STORAGE_KEY = "public_desktop_files"; // LocalStorage key
-let files = []; // Array to store file objects {id, name, content}
-let activeFileId = null; // ID of currently selected file
+/*  STORAGE & DATA  */
+const STORAGE_PREFIX = "open";
+const STORAGE_VERSION = "v1";
+const STORAGE_KEY = `${STORAGE_PREFIX}_desktop_files_${STORAGE_VERSION}`;
+const THEME_KEY = `${STORAGE_PREFIX}_theme_${STORAGE_VERSION}`;
 
-/* ====================== MODAL FUNCTIONS ====================== */
+let files = []; 
+let activeFileId = null;
+
+/*  MODAL FUNCTIONS  */
 // Close modal
 function closeModal() {
     modal.classList.add("hidden");
@@ -67,7 +71,7 @@ function showConfirmModal(title) {
     });
 }
 
-/* ====================== LOAD & SAVE FILES ====================== */
+/*  LOAD & SAVE FILES  */
 window.addEventListener("DOMContentLoaded", () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) files = JSON.parse(saved);
@@ -75,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
     updatePlaceholder();
 
     // Apply saved dark/light mode
-    const savedMode = localStorage.getItem("theme");
+    const savedMode = localStorage.getItem(THEME_KEY);
     if (savedMode === "dark") {
         document.body.classList.add("dark-mode");
         modeToggle.checked = true;
@@ -87,7 +91,7 @@ function saveFiles() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(files));
 }
 
-/* ====================== RENDER FILE LIST ====================== */
+/*  RENDER FILE LIST  */
 function renderFileList() {
     fileList.innerHTML = "";
     files.forEach(file => {
@@ -115,7 +119,7 @@ function renderFileList() {
     updatePlaceholder();
 }
 
-/* ====================== PLACEHOLDER ====================== */
+/*  PLACEHOLDER  */
 function updatePlaceholder() {
     if (!activeFileId) {
         placeholder.style.display = "block";
@@ -126,7 +130,7 @@ function updatePlaceholder() {
     }
 }
 
-/* ====================== ADD FILE ====================== */
+/*  ADD FILE  */
 addFileBtn.addEventListener("click", async () => {
     const name = await showModal("Enter new file name:", "Untitled");
     if (!name) return;
@@ -138,7 +142,7 @@ addFileBtn.addEventListener("click", async () => {
     saveFiles();
 });
 
-/* ====================== SELECT / RENAME / DELETE FILE ====================== */
+/*  SELECT / RENAME / DELETE FILE  */
 fileList.addEventListener("click", async (e) => {
     const li = e.target.closest("li");
     if (!li) return;
@@ -174,7 +178,7 @@ fileList.addEventListener("click", async (e) => {
     renderFileList();
 });
 
-/* ====================== EDIT FILE CONTENT ====================== */
+/*  EDIT FILE CONTENT  */
 txtFile.addEventListener("input", () => {
     if (!activeFileId) return;
     const file = files.find(f => f.id === activeFileId);
@@ -184,13 +188,13 @@ txtFile.addEventListener("input", () => {
     }
 });
 
-/* ====================== DARK / LIGHT MODE TOGGLE ====================== */
+/*  DARK / LIGHT MODE TOGGLE  */
 modeToggle.addEventListener("change", () => {
     if (modeToggle.checked) {
         document.body.classList.add("dark-mode");
-        localStorage.setItem("theme","dark");
+        localStorage.setItem(THEME_KEY,"dark");
     } else {
         document.body.classList.remove("dark-mode");
-        localStorage.setItem("theme","light");
+        localStorage.setItem(THEME_KEY,"light");
     }
 });

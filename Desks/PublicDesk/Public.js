@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 🔥 Start music on FIRST user interaction
+    // Start music on FIRST user interaction
     document.addEventListener("click", startMusic, { once: true });
     document.addEventListener("keydown", startMusic, { once: true });
 

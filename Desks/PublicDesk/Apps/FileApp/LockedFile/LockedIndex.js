@@ -11,12 +11,13 @@ const modalCancel = document.getElementById("modalCancel"); // Modal Cancel butt
 const modeToggle = document.getElementById("modeToggle"); // Dark/Light toggle
 
 /*  STORAGE & DATA  */
-// New unique storage name (separate from your old desktop file)
-const STORAGE_KEY = "public_desktop_files_v2_unique"; 
-const THEME_KEY = "public_desktop_theme_v2_unique";
+const STORAGE_PREFIX = "locked";
+const STORAGE_VERSION = "v1";
+const STORAGE_KEY = `${STORAGE_PREFIX}_desktop_files_${STORAGE_VERSION}`;
+const THEME_KEY = `${STORAGE_PREFIX}_theme_${STORAGE_VERSION}`;
 
-let files = []; // Array to store file objects {id, name, content}
-let activeFileId = null; // ID of currently selected file
+let files = []; 
+let activeFileId = null;
 
 /*  MODAL FUNCTIONS  */
 // Close modal
