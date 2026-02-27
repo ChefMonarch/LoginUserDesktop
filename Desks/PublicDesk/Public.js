@@ -207,25 +207,13 @@ function returnToOrigin() {
 // SIMPLE PLAYLIST ROTATOR (5+ TRACKS)
 // 
 
-// Wait until the page fully loads
+// SIMPLE PLAYLIST ROTATOR (FIXED AUTOPLAY)
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Grab the audio element
     const audio = document.getElementById("bgMusic");
     const muteBtn = document.getElementById("MuteBtn");
 
-    // Mute toggle
-    muteBtn.addEventListener("click", () => {
-        audio.muted = !audio.muted;
-
-        if (audio.muted) {
-            muteBtn.textContent = "🔇";
-        } else {
-            muteBtn.textContent = "🔊";
-        }
-    });
-
-    // Playlist (your exact files)
     const playlist = [
         "Music/LaFaena-CarDrive.mp3",
         "Music/MaestroOne-AllSaidAndDone.mp3",
@@ -234,38 +222,41 @@ document.addEventListener("DOMContentLoaded", () => {
         "Music/TillParadiso-NewIdeas.mp3"
     ];
 
-    // Track index tracker
     let currentTrack = 0;
+    let hasStarted = false; // prevents multiple triggers
 
-    // Function to load and play a track
     function loadTrack(index) {
-        // Safety check
-        if (index < 0 || index >= playlist.length) return;
-
-        // Change the audio source
         audio.src = playlist[index];
-
-        // Load the new track
         audio.load();
+    }
 
-        // Attempt to play (user can also press play manually)
-        audio.play().catch(() => {
-            console.log("Autoplay prevented until user interaction.");
+    function startMusic() {
+        if (hasStarted) return;
+
+        hasStarted = true;
+        loadTrack(currentTrack);
+
+        audio.play().catch(err => {
+            console.log("Playback blocked:", err);
         });
     }
 
-    // When a song finishes → go to next song
+    // 🔥 Start music on FIRST user interaction
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("keydown", startMusic, { once: true });
+
+    // When track ends → go to next
     audio.addEventListener("ended", () => {
         currentTrack++;
-
-        // Loop back to first track after last
-        if (currentTrack >= playlist.length) {
-            currentTrack = 0;
-        }
-
+        if (currentTrack >= playlist.length) currentTrack = 0;
         loadTrack(currentTrack);
+        audio.play();
     });
 
-    // Optional: start with first track loaded (but not forced autoplay)
-    loadTrack(currentTrack);
+    // Mute toggle
+    muteBtn.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+    });
+
 });
