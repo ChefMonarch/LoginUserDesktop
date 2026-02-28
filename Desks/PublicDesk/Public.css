@@ -43,6 +43,9 @@ body {
 #OpenNotes {
     background-image: url("AppIconesImg/NotesApp.png");
 }
+#ATM {
+    background-image: url("AppIconesImg/ATMIcon.png");
+}
 
 /* Push apps down so they don't hide under bar */
 #Apps {
